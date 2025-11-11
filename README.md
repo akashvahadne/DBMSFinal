@@ -59,3 +59,5 @@
     </tr>
   </tbody>
 </table>
+<h6>For SQL(2-4) SQL Workbench</h6>
+<h6>For Pl/SQL Codes(5-8) https://freesql.com/</h6>
