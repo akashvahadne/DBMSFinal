@@ -1,0 +1,151 @@
+🧩 Practical 9: Study of Open Source NoSQL Database — MongoDB
+
+(Installation, Basic CRUD Operations, and Execution)
+
+🎯 Aim
+
+To study and perform installation and basic CRUD (Create, Read, Update, Delete) operations using the MongoDB NoSQL database.
+
+⚙️ Step 1: Installation of MongoDB
+🪟 For Windows:
+
+Download MongoDB from the official website:
+👉 https://www.mongodb.com/try/download/community
+
+Install it using the setup wizard.
+
+During setup, select ✅ Install MongoDB as a Service.
+
+Once installed, MongoDB is available at:
+
+C:\Program Files\MongoDB\Server\<version>\bin
+
+
+Add this path to your Environment Variables → Path.
+
+💻 Step 2: Verify Installation
+
+Open Command Prompt (cmd) or PowerShell and type:
+
+mongosh
+
+
+If MongoDB is installed correctly, you will see:
+
+Using MongoDB: 8.x.x
+Using Mongosh: 2.x.x
+test>
+
+
+✅ You are now inside the Mongo Shell.
+
+🧱 Step 3: Create Database and Collection
+Create a new database:
+use collegeDB
+
+Create a collection:
+db.createCollection("students")
+
+
+✅ Output:
+
+{ "ok" : 1 }
+
+🧾 Step 4: Perform Basic CRUD Operations
+➕ CREATE (Insert Data)
+db.students.insertMany([
+  { roll_no: 1, name: "Akash", dept: "Computer", city: "Nashik", marks: 85 },
+  { roll_no: 2, name: "Neha", dept: "IT", city: "Pune", marks: 92 },
+  { roll_no: 3, name: "Rohan", dept: "ENTC", city: "Mumbai", marks: 78 },
+  { roll_no: 4, name: "Meera", dept: "Computer", city: "Nashik", marks: 88 },
+  { roll_no: 5, name: "Saurabh", dept: "IT", city: "Nagpur", marks: 70 }
+])
+
+
+✅ Output:
+
+Acknowledged: true
+Inserted 5 documents
+
+🔍 READ (Find Data)
+Show all students:
+db.students.find()
+
+Show students with marks greater than 80:
+db.students.find({ marks: { $gt: 80 } })
+
+Show students from "Nashik":
+db.students.find({ city: "Nashik" })
+
+✏️ UPDATE (Modify Data)
+Update a single record:
+db.students.updateOne(
+  { roll_no: 3 },
+  { $set: { marks: 82, city: "Aurangabad" } }
+)
+
+Update multiple records:
+db.students.updateMany(
+  { dept: "IT" },
+  { $inc: { marks: 5 } }
+)
+
+
+✅ The $set operator modifies specific fields,
+✅ The $inc operator increments numerical values.
+
+🗑️ DELETE (Remove Data)
+Delete one record:
+db.students.deleteOne({ roll_no: 5 })
+
+Delete multiple records:
+db.students.deleteMany({ city: "Nashik" })
+
+🧠 Step 5: Understanding MongoDB Structure
+Concept	Equivalent In SQL	Description
+Database	Database	A logical container for collections
+Collection	Table	Stores documents
+Document	Row	A JSON-like record
+Field	Column	Key-value pair inside a document
+⚡ Step 6: Execute CRUD Using MongoDB Compass
+
+If using MongoDB Compass (GUI tool):
+
+Open MongoDB Compass
+
+Connect using:
+
+mongodb://localhost:27017
+
+
+Create a new Database:
+Database name: collegeDB
+Collection name: students
+
+Perform CRUD using GUI buttons:
+
+Insert Document → Add new student
+
+Filter Box → Search / Read
+
+UPDATE / DELETE buttons → Modify or remove data
+
+✅ Result
+
+MongoDB was successfully installed, configured, and basic CRUD operations were executed using:
+
+Mongo Shell (CLI)
+
+MongoDB Compass (GUI)
+
+🧾 Output Example (Final Data in Collection)
+[
+  { "roll_no": 1, "name": "Akash", "dept": "Computer", "city": "Nashik", "marks": 85 },
+  { "roll_no": 2, "name": "Neha", "dept": "IT", "city": "Pune", "marks": 97 },
+  { "roll_no": 3, "name": "Rohan", "dept": "ENTC", "city": "Aurangabad", "marks": 82 },
+  { "roll_no": 4, "name": "Meera", "dept": "Computer", "city": "Nashik", "marks": 88 }
+]
+
+🎓 Conclusion
+
+MongoDB, a NoSQL open-source database, was successfully installed and demonstrated using CRUD operations for managing student records. The experiment shows how MongoDB stores data in flexible JSON-like documents instead of rigid tables.

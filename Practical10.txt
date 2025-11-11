@@ -1,0 +1,103 @@
+🧩 PRACTICAL 10 — Step-by-Step Execution Guide
+🎯 Aim
+To perform basic CRUD operations (Create, Read, Update, Delete)
+and use the SAVE method and logical operators in MongoDB.
+
+🧱 Step 1: Create Database and Collection
+Open MongoDB Compass.
+Click on ➕ Create Database
+Enter:
+Database Name: collegeDB
+Collection Name: students
+Click Create Database ✅
+
+🧾 Step 2: Insert Documents (CREATE Operation)
+Now click on collegeDB → students → ADD DATA → Insert Document
+Paste this code and click Insert 👇
+[
+  { "roll_no": 1, "name": "Akash", "dept": "Computer", "city": "Nashik", "marks": 85 },
+  { "roll_no": 2, "name": "Neha", "dept": "IT", "city": "Pune", "marks": 92 },
+  { "roll_no": 3, "name": "Rohan", "dept": "ENTC", "city": "Mumbai", "marks": 78 },
+  { "roll_no": 4, "name": "Meera", "dept": "Computer", "city": "Nashik", "marks": 88 },
+  { "roll_no": 5, "name": "Saurabh", "dept": "IT", "city": "Nagpur", "marks": 70 }
+]
+
+✅ You have now inserted multiple documents into the collection.
+
+🔍 Step 3: Retrieve Data (READ Operation)
+a) Show all students
+In the Filter box, type:
+{}
+
+Click Find
+👉 Displays all students.
+
+b) Show students with marks greater than 80
+{ "marks": { "$gt": 80 } }
+
+c) Show students from Nashik city
+{ "city": "Nashik" }
+
+d) Show students from Computer OR IT department
+(Logical Operator $or)
+{ "$or": [ { "dept": "Computer" }, { "dept": "IT" } ] }
+
+e) Show students with marks between 75 and 90
+(Logical Operator $and)
+{ "$and": [ { "marks": { "$gte": 75 } }, { "marks": { "$lte": 90 } } ] }
+
+✏️ Step 4: Update Data (UPDATE Operation)
+Click on UPDATE or run this query in mongosh:
+db.students.updateOne(
+  { "roll_no": 3 },
+  { "$set": { "marks": 82, "city": "Aurangabad" } }
+)
+
+👉 This updates Rohan’s marks and city.
+
+You can also update many records at once:
+db.students.updateMany(
+  { "dept": "IT" },
+  { "$inc": { "marks": 5 } }
+)
+
+
+👉 Adds 5 marks to all IT students.
+
+🗑️ Step 5: Delete Data (DELETE Operation)
+To delete a specific record:
+db.students.deleteOne({ "roll_no": 5 })
+
+To delete all students from a city:
+db.students.deleteMany({ "city": "Nashik" })
+
+💾 Step 6: SAVE Method (Insert or Update Automatically)
+MongoDB’s save() method will insert a new document
+if it doesn’t exist, or update it if it does exist.
+
+db.students.save({ "roll_no": 6, "name": "Priya", "dept": "AI", "city": "Pune", "marks": 95 })
+
+👉 Adds a new student if roll_no = 6 doesn’t exist.
+👉 If it exists, updates that record.
+
+🧠 Step 7: Use of Logical Operators
+Operator	Description	Example
+$and	Returns documents that match both conditions	{ "$and": [ { "dept": "IT" }, { "marks": { "$gt": 80 } } ] }
+$or	Returns documents that match either condition	{ "$or": [ { "city": "Pune" }, { "city": "Nashik" } ] }
+$not	Returns documents that do not match a condition	{ "marks": { "$not": { "$gte": 80 } } }
+$nor	Returns documents that fail all conditions	{ "$nor": [ { "dept": "IT" }, { "dept": "Computer" } ] }
+📋 Step 8: Verify All Documents
+
+To confirm final data, run:
+{}
+
+and click Find again — this will show the updated collection.
+
+🏁 Step 9: Result
+✅ You have successfully demonstrated all CRUD operations:
+
+Create → insertMany()
+Read → find() with conditions and logical operators
+Update → updateOne() / updateMany()
+Delete → deleteOne() / deleteMany()
+Save → save() (insert or update)
