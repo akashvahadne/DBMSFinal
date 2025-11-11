@@ -1,0 +1,51 @@
+Run the below code here: https://jsonlint.com
+
+1. Simple JSON Object
+{
+  "student": {
+    "roll_no": 1,
+    "name": "Akash",
+    "department": "Computer",
+    "marks": 89,
+    "city": "Nashik"
+  }
+}
+
+2. JSON Array Object
+{
+  "students": [
+    {
+      "roll_no": 1,
+      "name": "Akash",
+      "marks": 89,
+      "city": "Nashik"
+    },
+    {
+      "roll_no": 2,
+      "name": "Neha",
+      "marks": 92,
+      "city": "Pune"
+    },
+    {
+      "roll_no": 3,
+      "name": "Rohan",
+      "marks": 76,
+      "city": "Mumbai"
+    }
+  ]
+}
+
+External Viva sathi answer:
+When the examiner asks:
+    “How will you run or show this practical?”
+
+You should say:
+“Sir/Ma’am, JSON is a text-based data format. We usually demonstrate it by writing valid JSON structure in an editor like VS Code, Online JSON Viewer, or MongoDB Compass. It doesn’t execute like SQL — it represents structured data.”
+
+Then, you can:
+Open VS Code / Notepad / Online JSON Viewer
+Paste your JSON code
+Show that the structure is valid and formatted properly.
+
+✅ That’s enough to “run” it.
+Fakt check kar ki valid ahe ki nahi 
